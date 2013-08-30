@@ -1,5 +1,5 @@
-#ifndef __INPAINT_H__
-#define __INPAINT_H__
+#ifndef __INPAINT_H_
+#define __INPAINT_H_
 #include "defineall.h"
 
 Inpaint_P initInpaint();
