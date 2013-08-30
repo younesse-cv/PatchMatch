@@ -1,5 +1,5 @@
-#ifndef __STRUCT_PATCHMATCH_H__
-#define __STRUCT_PATCHMATCH_H__
+#ifndef __STRUCT_PATCHMATCH_H_
+#define __STRUCT_PATCHMATCH_H_
 
 // the maximum value returned by MaskedImage.distance() 
 #define DSCALE 65535
