@@ -1,5 +1,5 @@
-#ifndef __MASKED_IMAGE_H__
-#define __MASKED_IMAGE_H__
+#ifndef __MASKED_IMAGE_H_
+#define __MASKED_IMAGE_H_
 #include "defineall.h"
 
 void initSimilarity();
