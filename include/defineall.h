@@ -10,7 +10,7 @@
 #include "structdef.h"
 #include "Inpaint.h"
 #include "maskedimage.h"
-#include "nearestneighbor_Field.h"
+#include "nearestneighborfield.h"
 #include "qualitymesures.h"
 
 double max1(double a, double b);
