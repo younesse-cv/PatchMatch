@@ -2,7 +2,6 @@
 
 /**
 * Nearest-Neighbor Field (see PatchMatch algorithm) 
-* 
 *  This algorithme uses a version proposed by Xavier Philippeau
 *
 */
@@ -39,8 +38,8 @@ void freeNNFField(NNF_P nnf)
 {
 	int i, j;
 	if ( nnf->field != NULL ){
-		for ( i=0 ; i < nnf->fieldH ; i++ ){
-			for ( j=0 ; j < nnf->fieldW ; j++ ){
+		for ( i=0 ; i < nnf->fieldH ; ++i ){
+			for ( j=0 ; j < nnf->fieldW ; ++j ){
 				free( nnf->field[i][j] );
 			}
 			free(nnf->field[i]);
@@ -65,8 +64,8 @@ void randomize(NNF_P nnf)
 	int i, j;
 	// field
 	allocNNFField(nnf);
-    for (i=0; i<nnf->input->image->height; i++){
-        for (j=0; j<nnf->input->image->width; j++){
+    for (i=0; i<nnf->input->image->height; ++i){
+        for (j=0; j<nnf->input->image->width; ++j){
 			nnf->field[i][j][0] = rand() % nnf->output->image->height +1;
 			nnf->field[i][j][1] = rand() % nnf->output->image->width +1;
 			nnf->field[i][j][2] = DSCALE;
@@ -83,8 +82,8 @@ void initializeNNFFromOtherNNF(NNF_P nnf, NNF_P otherNnf)
 	allocNNFField(nnf);
 	fy = nnf->fieldW/otherNnf->fieldW;
 	fx = nnf->fieldH/otherNnf->fieldH;
-    for (x=0;x<nnf->fieldH;x++) {
-        for (y=0;y<nnf->fieldW;y++) {
+    for (x=0;x<nnf->fieldH;++x) {
+        for (y=0;y<nnf->fieldW;++y) {
 			xlow = int(min1(x/fx, otherNnf->input->image->height-1));
 			ylow = int(min1(y/fy, otherNnf->input->image->width-1));
 			nnf->field[x][y][0] = otherNnf->field[xlow][ylow][0]*fx;  
@@ -100,8 +99,8 @@ void initializeNNF(NNF_P nnf)
 {
 	int y, x;
 	int iter=0, maxretry=20;
-    for (x=0;x<nnf->fieldH;x++) {
-        for (y=0;y<nnf->fieldW;y++) {
+    for (x=0;x<nnf->fieldH;++x) {
+        for (y=0;y<nnf->fieldW;++y) {
 
 			nnf->field[x][y][2] = distanceNNF(nnf, x,y,  nnf->field[x][y][0],nnf->field[x][y][1]);
 			// if the distance is INFINITY (all pixels masked ?), try to find a better link
@@ -124,8 +123,8 @@ void minimizeNNF(NNF_P nnf, int pass)
 	// multi-pass minimization
     for (i=0;i<pass;i++) {
 		// scanline order
-        for (x=min_x;x<max_x;x++)
-            for (y=min_y;y<=max_y;y++)
+        for (x=min_x;x<max_x;++x)
+            for (y=min_y;y<=max_y;++y)
                 if (nnf->field[x][y][2]>0)
                     minimizeLinkNNF(nnf, x,y,+1);
 
