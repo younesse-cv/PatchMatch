@@ -1,6 +1,7 @@
 #include "defineall.h"
 
 // Disable to measure the PSNR or the SSIM measure 
+
 #define MESURES 0
 
 double* G_globalSimilarity = NULL;
