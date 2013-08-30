@@ -8,7 +8,7 @@
 #include <highgui.h>
 #include <time.h>
 #include "structdef.h"
-#include "Inpaint.h"
+#include "inpaint.h"
 #include "maskedimage.h"
 #include "nearestneighborfield.h"
 #include "qualitymesures.h"
