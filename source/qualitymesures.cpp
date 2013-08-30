@@ -26,7 +26,8 @@ double PSNR(IplImage *Original , IplImage *inpainted)
     *The equivalent of Zhou Wang's SSIM matlab code using OpenCV.
     * from http://www.cns.nyu.edu/~zwang/files/research/ssim/index.html
     * The measure is described in :
-    * "Image quality assessment: From error measurement to structural similarity"*/
+    * "Image quality assessment: From error measurement to structural similarity"
+    */
 
 double SSIM(IplImage *original,IplImage *distorted)
 {
