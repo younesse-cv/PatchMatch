@@ -1,5 +1,5 @@
-#ifndef __quality_mesure_H__
-#define __quality_mesure_H__
+#ifndef __quality_mesure_H_
+#define __quality_mesure_H_
 #include "defineall.h"
 
 double PSNR(IplImage *original,IplImage *distorted);
