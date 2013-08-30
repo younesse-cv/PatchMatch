@@ -1,5 +1,5 @@
-#ifndef __NNF_H__
-#define __NNF_H__
+#ifndef __NNF_H_
+#define __NNF_H_
 #include "defineall.h"
 
 NNF_P initNNF(MaskedImage_P input, MaskedImage_P output, int patchsize);
