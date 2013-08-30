@@ -8,7 +8,7 @@ void initSimilarity()
 	length = (DSCALE+1);
     if (!G_initSim) {
 		G_globalSimilarity = (double *) calloc(length, sizeof(double));
-        for (i=0;i<length;i++) {
+        for ( i=0 ; i<length ; ++i) {
 			t = (double)i/length;
 			j = (int)(100*t);
 			k=j+1;
@@ -175,8 +175,8 @@ int distanceMaskedImage(MaskedImage_P source,int xs,int ys, MaskedImage_P target
 	int s_value, t_value, s_gx, t_gx, s_gy, t_gy;
 
 	// for each pixel in the source patch
-    for ( dy=-S ; dy<=S ; dy++ ) {
-        for ( dx=-S ; dx<=S ; dx++ ) {
+    for ( dy=-S ; dy<=S ; ++dy ) {
+        for ( dx=-S ; dx<=S ; ++dx ) {
 
 			xks = xs+dx;
 			yks = ys+dy;
@@ -198,7 +198,7 @@ int distanceMaskedImage(MaskedImage_P source,int xs,int ys, MaskedImage_P target
 			if (isMasked(target, xkt, ykt)) {distance++; continue;}
 
 			ssd=0;
-            for (band=0; band<3; band++) {
+            for (band=0; band<3; ++band) {
 				// pixel values
 				s_value = getSampleMaskedImage(source, xks, yks, band);
 				t_value = getSampleMaskedImage(source, xkt, ykt, band);
@@ -264,9 +264,9 @@ MaskedImage_P downsample2(MaskedImage_P source) {
 
 	MaskedImage_P newimage = initNewMaskedImage(newW, newH);
 	xs=0;
-	for(x=0;x<newH;x++) {
+	for(x=0;x<newH;++x) {
 		ys=0;
-		for(y=0;y<newW;y++) {
+		for(y=0;y<newW;++y) {
 			r=0; g=0; b=0; m=0; ksum=0;
 
 			for(dy=-2;dy<=3;dy++) {
@@ -326,12 +326,12 @@ MaskedImage_P downsample(MaskedImage_P source)
         for (y=0;y<W-1;y+=2) {
 			r=0; g=0; b=0; m=0; ksum=0;
 
-            for (dy=-2;dy<=3;dy++) {
+            for (dy=-2;dy<=3;++dy) {
 				yk=y+dy;
                 if (yk<0 || yk>=W)
                     continue;
 				ky = kernel[2+dy];
-                for (dx=-2;dx<=3;dx++) {
+                for (dx=-2;dx<=3;++dx) {
 					xk = x+dx;
                     if (xk<0 || xk>=H)
                         continue;
