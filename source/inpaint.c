@@ -73,8 +73,8 @@ MaskedImage_P ExpectationMaximization(Inpaint_P imp, int level)
         H = source->image->height;
         W = source->image->width;
         // we force the link between unmasked patch in source/target
-        for (x=0;x<H;x++)
-            for (y=0;y<W;y++)
+        for ( x=0 ; x<H; ++x)
+            for ( y=0 ; y<W ; ++y)
                 if (!constainsMasked(source, x, y, imp->radius)) {
                     imp->nnf_SourceToTarget->field[x][y][0] = x;
                     imp->nnf_SourceToTarget->field[x][y][1] = y;
@@ -83,8 +83,8 @@ MaskedImage_P ExpectationMaximization(Inpaint_P imp, int level)
 
         H = target->image->height;
         W = target->image->width;
-        for (x=0;x<H;x++)
-            for (y=0;y<W;y++)
+        for ( x=0 ; x<H ; ++x)
+            for ( y=0 ; y<W ; ++y)
                 if (!constainsMasked(source, x, y, imp->radius)) {
                     imp->nnf_TargetToSource->field[x][y][0] = x;
                     imp->nnf_TargetToSource->field[x][y][1] = y;
@@ -115,9 +115,9 @@ MaskedImage_P ExpectationMaximization(Inpaint_P imp, int level)
         // votes for best patch from NNF Source->Target (completeness) and Target->Source (coherence)
 
         vote = (double ***)malloc(newtarget->image->height*sizeof(double **));
-        for (i=0;i<newtarget->image->height;i++){
+        for ( i=0 ; i<newtarget->image->height ; ++i ){
             vote[i] = (double **)malloc(newtarget->image->width*sizeof(double *));
-            for (j=0;j<newtarget->image->width;j++) {
+            for  ( j=0 ; j<newtarget->image->width ; ++j) {
                 vote[i][j] = (double *)calloc(4, sizeof(double));
             }
         }
@@ -163,8 +163,8 @@ void ExpectationStep(NNF_P nnf, int sourceToTarget, double*** vote, MaskedImage_
     W = nnf->input->image->width;
     Ho = nnf->output->image->height;
     Wo = nnf->output->image->width;
-    for (x=0;x<H;x++) {
-        for (y=0;y<W;y++) {
+    for ( x=0 ; x<H ; ++x) {
+        for ( y=0 ; y<W; ++y) {
             // x,y = center pixel of patch in input
 
             // xp,yp = center pixel of best corresponding patch in output
@@ -176,8 +176,8 @@ void ExpectationStep(NNF_P nnf, int sourceToTarget, double*** vote, MaskedImage_
             w = G_globalSimilarity[dp];
 
             // vote for each pixel inside the input patch
-            for (dy=-R;dy<=R;dy++) {
-                for (dx=-R;dx<=R;dx++) {
+            for ( dy=-R ; dy<=R ; ++dy) {
+                for ( dx=-R ; dx<=R; ++dx) {
 
                     // get corresponding pixel in output patch
                     if (sourceToTarget)
@@ -223,8 +223,8 @@ void MaximizationStep(MaskedImage_P target, double*** vote)
     int y, x, H, W, r, g, b;
     H = target->image->height;
     W = target->image->width;
-    for(x=0;x<H;x++){
-        for(y=0;y<W;y++){
+    for( x=0 ; x<H ; ++x){
+        for( y=0 ; y<W ; ++y){
             if (vote[x][y][3]>0) {
                 r = (int) (vote[x][y][0]/vote[x][y][3]);
                 g = (int) (vote[x][y][1]/vote[x][y][3]);
@@ -326,7 +326,7 @@ void freeInpaintingPyramid(Inpaint_P inp)
 {
     int i;
     if (inp->pyramid != NULL) {
-        for ( i=0 ; i<inp->nbEltPyramid ; i++)
+        for ( i=0 ; i<inp->nbEltPyramid ; ++i)
             freeMaskedImage(inp->pyramid[i]);
 
         free(inp->pyramid);
