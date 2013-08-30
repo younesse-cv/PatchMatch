@@ -21,7 +21,7 @@ Copyright (c) 2010-2011
 Requirements 
 ============
 
-This project is implemented in windows. To run it you need to install Opencv library and link it to your project. 
+To run the project you need to install Opencv library and link it to your project. 
 Opencv can be download it here 
 http://opencv.org/downloads.html
 
