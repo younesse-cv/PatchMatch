@@ -6,7 +6,7 @@ README:   Inpainting based PatchMatch
 
 @Contact: younesse.andam@gmail.com 
    
-Desciption This project is a personal implementation of an algorithm called PATCHMATCH that restores missing areas in an image. 
+Description: This project is a personal implementation of an algorithm called PATCHMATCH that restores missing areas in an image. 
 The algorithm is presented in the following paper 
  PatchMatch  A Randomized Correspondence Algorithm          
                for Structural Image Editing                       
