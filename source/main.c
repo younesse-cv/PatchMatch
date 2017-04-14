@@ -105,7 +105,7 @@ int main(int argc, char** argv)
 	int step = maskimage->widthStep/sizeof(uchar);
 	int ** mask;
 	mask = (int **) calloc(int(height),sizeof(int*));
-    for ( int i=0 ; i<width ; i++)
+    for ( int i=0 ; i<height ; i++)
 		mask[i] = (int *) calloc(int(width),sizeof(int));
 
 	printf("----------------------------------------------------------------------\n");
